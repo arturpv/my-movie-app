@@ -101,7 +101,7 @@ const Movies: React.FC<Props> = ({
     year: string | null
   ) => {
     const apiKey = 'b3e9b3df';
-    let url = `http://www.omdbapi.com/?apikey=${apiKey}&s=${query}&page=${page}&per_page=10`;
+    let url = `https://www.omdbapi.com/?apikey=${apiKey}&s=${query}&page=${page}&per_page=10`;
 
     if (type) {
       url += `&type=${type}`;
