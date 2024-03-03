@@ -11,6 +11,9 @@ import {
   CardHeader,
   CardTitle,
 } from '../components/ui/card';
+import { Button } from "../components/ui/button"
+import { Input } from "../components/ui/input"
+
 
 interface Movie {
   Title: string;
@@ -131,14 +134,6 @@ const Movies: React.FC<Props> = ({
     fetchMovies(searchTermState, page, selectedTypeState, selectedYearState);
   };
 
-  useEffect(() => {
-    const fetchMoviesAndSetState = async () => {
-      await fetchMovies(searchTermState, currentPageState, selectedTypeState, selectedYearState);
-    };
-
-    fetchMoviesAndSetState();
-  }, [searchTermState, currentPageState, selectedTypeState]);
-
   return (
     <Layout>
       <div className="flex flex-col items-center h-screen">
@@ -146,7 +141,7 @@ const Movies: React.FC<Props> = ({
           <h1 className="text-3xl font-bold mb-4">Movie List</h1>
 
           <div className="flex items-center mb-4">
-            <input
+            <Input
               type="text"
               placeholder="Search for a movie"
               value={searchTermState}
@@ -163,24 +158,24 @@ const Movies: React.FC<Props> = ({
               <option value="series">Series</option>
               <option value="episode">Episode</option>
             </select>
-            <input
+            <Input
               type="text"
               placeholder="Year"
               value={selectedYearState || ''}
               onChange={(e) => setSelectedYear(e.target.value)}
               className="border p-2 bg-gray-700 text-white focus:outline-none"
             />
-            <button
+            <Button
               onClick={handleSearch}
               className="bg-blue-500 text-white px-4 py-2 rounded focus:outline-none"
             >
               Search
-            </button>
+            </Button>
           </div>
 
           <Card>
             <CardHeader>
-              <CardTitle>Notifications</CardTitle>
+              <CardTitle>Movies and Series</CardTitle>
               <CardDescription></CardDescription>
             </CardHeader>
             <CardContent className="grid gap-4">
